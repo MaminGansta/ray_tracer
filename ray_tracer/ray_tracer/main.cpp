@@ -50,8 +50,16 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE lool, LPSTR cmdLine, int show)
 
 
 	// ray tracer
-	Sphere sphere(vec3f(-3, 0, -16), 2);
-	render(screen, sphere);
+	Material      ivory(Color(110, 110, 80));
+	Material red_rubber(Color(80, 30, 30));
+
+	std::vector<Sphere> spheres;
+	spheres.push_back(Sphere(vec3f(-3, 0, -16), 2, ivory));
+	spheres.push_back(Sphere(vec3f(-1.0, -1.5, -12), 2, red_rubber));
+	spheres.push_back(Sphere(vec3f(1.5, -0.5, -18), 3, red_rubber));
+	spheres.push_back(Sphere(vec3f(7, 5, -18), 4, ivory));
+
+	render(screen, spheres);
 
 	Window::wait_msg_proc();
 	return 0;
