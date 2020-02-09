@@ -18,6 +18,11 @@ struct vec3
 		return vec3(x - other.x, y - other.y, z - other.z);
 	}
 
+	vec3 operator - () const
+	{
+		return vec3(-x, -y, -z);
+	}
+
 	float operator * (vec3 other)
 	{
 		return x * other.x + y * other.y + z * other.z;
@@ -49,4 +54,15 @@ struct vec3
 typedef vec3<float> vec3f;
 
 
+template <typename T>
+struct vec2
+{
+	union {
+		struct { T x, y; };
+		T raw[2];
+	};
 
+	vec2(T x, T y) : x(x), y(y) {}
+};
+
+typedef vec2<float> vec2f;
